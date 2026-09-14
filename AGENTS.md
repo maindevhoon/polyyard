@@ -206,6 +206,8 @@ An isometric or 3D-style yard view is encouraged as the memorable stage device. 
 
 ### Voice control
 
+Preserve the approved generated warehouse artwork. Animate transparent vehicle and inventory layers over the cleaned facility plate. Do not replace this artwork with a simplified geometric warehouse. Validate rendered movement with frame comparisons, and verify that departure removes the only visible truck while recorded inventory persists. Canvas may composite the generated assets; it must not substitute a lower-detail geometric scene.
+
 Use a labeled control such as **Speak to Gate** or **Report from Floor**, not an unexplained floating microphone. While active, show the detected language, partial transcript, and current system action (for example `Looking up PO` or `Booking verified slot`). Keep transcript history secondary and collapsible.
 
 ### Required demo states
