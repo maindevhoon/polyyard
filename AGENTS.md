@@ -202,7 +202,7 @@ The first viewport must make these visible without scrolling:
 
 ### Visual yard
 
-An isometric or 3D-style yard view is encouraged as the memorable stage device. It is a **projection of shared state**, never a second state engine. A truck may arrive, move to a door, or leave only after the corresponding validated event succeeds. A refused or unknown dock must never be drawn as though it exists. Prefer a reliable 2D/isometric implementation over complex 3D if the latter risks the demo.
+An isometric or 3D-style yard view is encouraged as the memorable stage device. The current art direction is a **clean white editorial interface with a miniature voxel/isometric warehouse diorama**: white, pearl, and soft gray surfaces with only restrained operational accents. Avoid a dark control-room theme, saturated game colors, or ornamental scenery. The diorama is a **projection of shared state**, never a second state engine. A truck may arrive, move to a door, or leave only after the corresponding validated event succeeds. A refused or unknown dock must never be drawn as though it exists. Prefer a reliable 2D/isometric implementation over complex 3D if the latter risks the demo.
 
 ### Voice control
 

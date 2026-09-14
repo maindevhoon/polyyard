@@ -19,12 +19,14 @@ function scene(name) {
     $('#yard-status-tag').textContent = 'VERIFIED'; $('#yard-status-title').textContent = 'Trailer 12 assigned to Dock 02';
     $('#yard-status-meta').textContent = 'PO 4500123 · 14:00–15:00'; $('#dock2-state').textContent = 'Assigned'; $('#dock2-meta').textContent = 'TR–12 · SYSCO';
     addEvent('ok', 'Appointment booked', 'Gate · PO 4500123 · Dock 02');
+    $('#dock-pin').classList.remove('cleared');
   }
   if (name === 'floor') {
     truck.classList.add('departed'); dock.classList.remove('active-dock');
     $('#yard-status-tag').textContent = 'PUT AWAY'; $('#yard-status-title').textContent = 'Trailer 12 cleared the yard';
     $('#yard-status-meta').textContent = '18 pallets · Aisle B'; $('#dock2-state').textContent = 'Available'; $('#dock2-meta').textContent = 'Reefer · Clear'; $('#appointment-status').textContent = 'Completed';
     addEvent('ok', 'Unload complete', 'Floor · 18 pallets · Aisle B');
+    $('#dock-pin').classList.add('cleared');
   }
   if (name === 'refuse') {
     addEvent('no', 'Unknown dock refused', 'Gate · Candidate “Dock 9” · No state changed');
