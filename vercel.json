@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/dist/index.html" },
+    { "source": "/app.js", "destination": "/dist/app.js" },
+    { "source": "/styles.css", "destination": "/dist/styles.css" },
+    { "source": "/white-theme.css", "destination": "/dist/white-theme.css" },
+    { "source": "/assets/:path*", "destination": "/dist/assets/:path*" }
+  ]
+}
