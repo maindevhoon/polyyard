@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07100e">
+  <meta name="description" content="PolyYard multilingual voice operations tower demo">
+  <title>PolyYard Tower</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307100e'/%3E%3Cpath d='M15 45V19h19c10 0 16 5 16 14S44 47 34 47H25V37h9c4 0 6-1 6-4s-2-4-6-4H25v16z' fill='%23d7ff3f'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="PolyYard Tower home"><span class="brand-mark">P</span><span>POLYYARD</span><em>TOWER</em></a>
+      <div class="facility"><span class="live-dot"></span><span class="desktop-only">Mercado North DC</span><strong>Live yard</strong></div>
+      <div class="top-actions"><span class="clock" id="clock">14:26:08</span><button class="icon-button" aria-label="Open settings">•••</button></div>
+    </header>
+
+    <main>
+      <section class="headline-row">
+        <div><p class="eyebrow">MONDAY · SEPTEMBER 14</p><h1>Three doors. One truth.</h1></div>
+        <div class="score"><span>IDENTIFIER SAFETY</span><strong><b id="safe-count">08</b> / 08</strong><small><i></i> ZERO INVENTED</small></div>
+      </section>
+
+      <section class="grid">
+        <article class="yard-card panel">
+          <div class="panel-head"><div><span class="kicker">LIVE YARD</span><h2>Dock operations</h2></div><div class="legend"><span><i class="available"></i>Available</span><span><i class="active"></i>Active</span></div></div>
+          <div class="yard" id="yard">
+            <svg viewBox="0 0 840 455" role="img" aria-label="Isometric view of three warehouse dock doors">
+              <defs><linearGradient id="roof" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#25332f"/><stop offset="1" stop-color="#101a17"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+              <path class="ground" d="M38 339 415 121 805 344 428 430Z"/>
+              <path class="road" d="m58 353 365-210 357 205-365 68Z"/>
+              <path class="building-side" d="m191 91 413 74v141l-413-40z"/>
+              <path class="building-front" d="m604 165 98-52v139l-98 54z"/>
+              <path fill="url(#roof)" d="m191 91 91-48 420 70-98 52z"/>
+              <text x="306" y="112" class="roof-label">MERCADO NORTH</text>
+              <g class="dock" data-dock="1"><path d="m255 166 81 11v77l-81-9z"/><text x="268" y="157">DOCK 01 · DRY</text><rect x="266" y="190" width="58" height="53"/></g>
+              <g class="dock active-dock" data-dock="2"><path d="m375 183 81 11v77l-81-9z"/><text x="387" y="174">DOCK 02 · REEFER</text><rect x="386" y="207" width="58" height="53"/></g>
+              <g class="dock" data-dock="3"><path d="m495 200 81 11v77l-81-9z"/><text x="508" y="191">DOCK 03 · DROP</text><rect x="507" y="224" width="58" height="53"/></g>
+              <g class="truck" id="truck"><path class="truck-shadow" d="m329 326 138-76 113 52-139 81z"/><path class="trailer-top" d="m363 290 88-48 97 45-89 51z"/><path class="trailer-side" d="m363 290 96 48v34l-96-46z"/><path class="trailer-end" d="m459 338 89-51v34l-89 51z"/><path class="cab-top" d="m310 321 53-31 45 22-54 31z"/><path class="cab-side" d="m310 321 44 22v35l-44-22z"/><circle cx="332" cy="367" r="8"/><circle cx="450" cy="377" r="8"/><text x="389" y="306">TR–12</text></g>
+              <g class="route"><path id="route-path" d="M321 352 C355 327 385 305 423 281"/><circle r="4"><animateMotion dur="2s" repeatCount="indefinite" path="M321 352 C355 327 385 305 423 281"/></circle></g>
+            </svg>
+            <div class="yard-status"><span id="yard-status-tag">UNLOADING</span><strong id="yard-status-title">Trailer 12 at Dock 02</strong><small id="yard-status-meta">Frozen · 00:42 on door</small></div>
+          </div>
+          <div class="dock-strip">
+            <div><span>01</span><p><strong>Available</strong><small>Dry · Clear</small></p></div>
+            <div class="selected"><span>02</span><p><strong id="dock2-state">Unloading</strong><small id="dock2-meta">TR–12 · SYSCO</small></p></div>
+            <div><span>03</span><p><strong>Reserved</strong><small>Drop · 15:30</small></p></div>
+          </div>
+        </article>
+
+        <aside class="right-stack">
+          <article class="active-card panel">
+            <div class="panel-head"><div><span class="kicker">ACTIVE APPOINTMENT</span><h2 id="appointment-status">On door</h2></div><span class="status-pill">VERIFIED</span></div>
+            <div class="appointment-id"><span>TRAILER</span><strong>12</strong><em>→</em><span>DOCK</span><strong>02</strong></div>
+            <div class="facts"><div><span>PO</span><strong>4500123</strong></div><div><span>SHIPPER</span><strong>Sysco</strong></div><div><span>WINDOW</span><strong>14:00–15:00</strong></div><div><span>LOAD</span><strong>Frozen</strong></div></div>
+            <div class="verified-line"><span>✓</span><p><strong>All identifiers tool-verified</strong><small>yard.bookAppointment · 14:02:18</small></p></div>
+          </article>
+
+          <article class="events-card panel">
+            <div class="panel-head"><div><span class="kicker">AUDIT STREAM</span><h2>What the yard accepted</h2></div><span class="event-count" id="event-count">3 events</span></div>
+            <div class="events" id="events">
+              <div class="event"><time>14:26</time><span class="event-icon ok">✓</span><p><strong>Unload started</strong><small>Floor · Trailer 12 · Dock 02</small></p></div>
+              <div class="event"><time>14:18</time><span class="event-icon ok">✓</span><p><strong>Checked in</strong><small>Gate · PO 4500123</small></p></div>
+              <div class="event"><time>14:02</time><span class="event-icon ok">✓</span><p><strong>Appointment booked</strong><small>Gate · Reefer slot verified</small></p></div>
+            </div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="demo-bar panel">
+        <div class="demo-copy"><span>DEMO PLAYBACK</span><strong>Run the 90-second story</strong><small>Simulated controls for rehearsal—not live transcription.</small></div>
+        <div class="demo-actions"><button data-scene="book"><b>1</b> Gate books</button><button data-scene="floor"><b>2</b> Floor clears</button><button data-scene="refuse"><b>3</b> Refuse Dock 9</button><button class="reset" data-scene="reset">↻ Reset</button></div>
+      </section>
+    </main>
+
+    <button class="voice-orb" id="voice-orb" aria-expanded="false"><span class="mic">●</span><span><b>Speak to Gate</b><small>AssemblyAI · Ready</small></span><i>⌃</i></button>
+    <section class="voice-panel" id="voice-panel" aria-hidden="true">
+      <div class="voice-head"><div><span class="pulse"></span><p><strong>Gate is listening</strong><small>English + Español detected</small></p></div><button id="close-voice" aria-label="Close voice panel">×</button></div>
+      <div class="wave" aria-hidden="true">||||||||||||||||||||||||</div>
+      <blockquote>“Jefe, trailer twelve, Sysco PO… va congelado, Thursday afternoon.”</blockquote>
+      <div class="tool-call"><span>LOOKUP</span><strong>Checking PO and reefer slots</strong><i>•••</i></div>
+      <div class="role-switch"><button class="active">Gate</button><button>Floor</button></div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
