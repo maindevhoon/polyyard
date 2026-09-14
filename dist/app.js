@@ -2,7 +2,17 @@ const $ = (s) => document.querySelector(s);
 const events = $('#events');
 const truck = $('#truck');
 const dock = document.querySelector('[data-dock="2"]');
+const liveTruck = $('#live-truck');
+const vehicleLabel = $('#vehicle-label');
 let eventCount = 3;
+let transitionTimer;
+
+function setVehicleState(state) {
+  clearTimeout(transitionTimer);
+  liveTruck.className = `live-truck ${state}`;
+  vehicleLabel.className = `vehicle-label ${state}`;
+  $('#yard').dataset.vehicleState = state;
+}
 
 function addEvent(kind, title, meta) {
   const now = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12:false});
@@ -15,20 +25,33 @@ function addEvent(kind, title, meta) {
 function scene(name) {
   if (name === 'reset') { location.reload(); return; }
   if (name === 'book') {
+    setVehicleState('approaching');
     truck.classList.remove('departed'); dock.classList.add('active-dock');
-    $('#yard-status-tag').textContent = 'VERIFIED'; $('#yard-status-title').textContent = 'Trailer 12 assigned to Dock 02';
+    $('#yard-status-tag').textContent = 'IN MOTION'; $('#yard-status-title').textContent = 'Trailer 12 approaching Dock 02';
     $('#yard-status-meta').textContent = 'PO 4500123 · 14:00–15:00'; $('#dock2-state').textContent = 'Assigned'; $('#dock2-meta').textContent = 'TR–12 · SYSCO';
     addEvent('ok', 'Appointment booked', 'Gate · PO 4500123 · Dock 02');
     $('#dock-pin').classList.remove('cleared');
+    transitionTimer = setTimeout(() => {
+      setVehicleState('docked');
+      $('#yard-status-tag').textContent = 'ON DOOR';
+      $('#yard-status-title').textContent = 'Trailer 12 at Dock 02';
+      $('#dock2-state').textContent = 'Unloading';
+      addEvent('ok', 'Trailer reached door', 'Yard · Trailer 12 · Dock 02');
+    }, 2600);
   }
   if (name === 'floor') {
+    setVehicleState('departing');
     truck.classList.add('departed'); dock.classList.remove('active-dock');
     $('#yard-status-tag').textContent = 'PUT AWAY'; $('#yard-status-title').textContent = 'Trailer 12 cleared the yard';
     $('#yard-status-meta').textContent = '18 pallets · Aisle B'; $('#dock2-state').textContent = 'Available'; $('#dock2-meta').textContent = 'Reefer · Clear'; $('#appointment-status').textContent = 'Completed';
     addEvent('ok', 'Unload complete', 'Floor · 18 pallets · Aisle B');
     $('#dock-pin').classList.add('cleared');
+    transitionTimer = setTimeout(() => setVehicleState('gone'), 2600);
   }
   if (name === 'refuse') {
+    $('#yard').classList.remove('constraint-flash');
+    void $('#yard').offsetWidth;
+    $('#yard').classList.add('constraint-flash');
     addEvent('no', 'Unknown dock refused', 'Gate · Candidate “Dock 9” · No state changed');
     $('#safe-count').textContent = String(parseInt($('#safe-count').textContent) + 1).padStart(2,'0');
   }
