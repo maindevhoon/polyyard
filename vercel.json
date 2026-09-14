@@ -5,6 +5,7 @@
   "rewrites": [
     { "source": "/", "destination": "/dist" },
     { "source": "/app.js", "destination": "/dist/app.js" },
+    { "source": "/yard.js", "destination": "/dist/yard.js" },
     { "source": "/styles.css", "destination": "/dist/styles.css" },
     { "source": "/white-theme.css", "destination": "/dist/white-theme.css" },
     { "source": "/yard-motion.css", "destination": "/dist/yard-motion.css" },
